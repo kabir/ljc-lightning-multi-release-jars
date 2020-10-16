@@ -2,7 +2,12 @@
 
 Repo containing the sample used for my London Java Community lightning talk
 about MultiRelease jars.
+
 The code in the `src/main/java` folder compiles and runs on Java 8. The code in the `src/main/java9` folder overrides the `PidUtil` class when run on Java 9 or later, and needs to be compiled with Java 9 or later.
+
+If you build with Java 8 nothing special happens, you just get the normal Java 8 stuff from the `src/main/java` folder.
+
+If you build with Java 9 or higher, the `java9-mr-build` profile kicks in which compiles the Java 9 classes from the `src/main/java9` folder. Then when you run `java -jar target/ljc-lightning-multi-release-jars-1.0.0-SNAPSHOT.jar`, the version of `PidUtil` that gets loaded depends on the Java version used to run it. If you run with Java 9 or higher you get the one from the `src/main/java9` folder. If you run with Java 8 you get the one from the `src/main/java` folder.
 
 
 Slides: https://docs.google.com/presentation/d/1p-qKbWt795JmlhbD6WTBJcO4em6K2w4tTb6nqLkLbho/edit?usp=sharing
